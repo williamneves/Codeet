@@ -1,0 +1,9 @@
+.vscode
+venv
+Pipfile
+Pipfile.lock
+commands.txt
+htmas.py
+package-lock.json
+package.json
+__pycache__
