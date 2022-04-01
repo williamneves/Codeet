@@ -62,7 +62,7 @@ def register():
     registerform = RegisterForm()
 
     if registerform.validate_on_submit():
-        image_filename=""
+        image_filename="profile_images/defaut_user.png"
         
         if registerform.image.data:
             datestr = uuid.uuid4()
@@ -83,4 +83,3 @@ def register():
         return redirect(url_for('views.profile'))
     
     return render_template("register.html", registerform = registerform,loginform = loginform)
-

@@ -82,7 +82,7 @@ def profile():
     codeets = Codeet.query.filter_by(user_id=current_user.id).order_by(Codeet.created_at.desc()).all()
     total_codeets = len(codeets)
     
-    return render_template('profile.html',loginform=loginform, current_user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today)
+    return render_template('profile.html',loginform=loginform, current_user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today,user=current_user)
 
 
 @views.route('/add-codeet-profile/', methods=['POST'])
