@@ -1,5 +1,7 @@
 pipenv shell
 
+
+
 pipenv install flask flask-script flask-sqlalchemy flask-migrate
 
 pipenv install Flask-Migrate
