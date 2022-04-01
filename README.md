@@ -25,7 +25,9 @@ The language used is `Python`, with `Flask framework`, `Jinja2` and others.
  - [ ] Timeline with all users you followings and tags
  - [ ] Search for user, codeet content and tags
  - [ ] Desktop and Mobile version
+
 **Back-end features:**
+
  - [ ] Python best practices
  - [x] SQLAlchemy ORM
  - [ ] Login and registration with hash session token
@@ -34,12 +36,15 @@ The language used is `Python`, with `Flask framework`, `Jinja2` and others.
 	 - [x] Includes templates
 	 - [ ] Jinja Macros
  - [x] Dynamic phrase and retrieve
+
 **Front-end features**
+
  - [ ] Bootstrap customized style
  - [ ] Mobile ready
  - [ ] Infinite pagination
 -----------
 **Features for version 2.0:**
+
  - [ ] Simple admin panel to manage users
  - [ ] Able to post photos and videos
  - [ ] AI to know the user mood and suggest content based on it
