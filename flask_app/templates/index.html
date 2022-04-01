@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<!-- Content -->
+<div class="container-lg">
+    <div class="row my-5">
+        <div class="col-3">
+            <!-- sidebar -->
+            <!-- Includes sidebar-timeline -->
+        {% include 'includes/sidebars/sidebar.html' %}
+        </div>
+        <div class="col-7">
+
+            {% if is_logged %}
+            <!-- New codeet form -->
+            {% include 'includes/forms/new-codeet.html' %}
+
+            {% endif %}
+            <!-- dynamic codeet catch -->
+            <div id="dynamic-codeet"></div>
+
+            <!-- Includes codeets -->
+            {% for codeet in codeets %}
+            {% include 'includes/codeet.html' %}
+            {% endfor %}
+        </div>
+        <div class="col-2">
+            <!-- Includes tagbar -->
+            {% include 'includes/sidebars/tagbar.html' %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

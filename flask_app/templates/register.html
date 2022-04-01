@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container-lg">
+<form action="/register/" method="POST" enctype="multipart/form-data" class="col-5 m-auto my-5 card p-5">
+    
+    <h4>Registration:</h4>
+    
+    {{ registerform.csrf_token }}
+    <div class="mb-3 form-floating">
+        {{ registerform.username(class="form-control", placeholder='-',autocomplete="new-password") }}
+        {{ registerform.username.label }}
+        {% for error in registerform.username.errors%}
+        <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3 form-floating">
+        {{ registerform.email(class="form-control", placeholder='-') }}
+        {{ registerform.email.label }}
+        {% for error in registerform.email.errors%}
+        <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3 form-floating">
+        {{ registerform.password(class="form-control", placeholder='-') }}
+        {{ registerform.password.label }}
+        {% for error in registerform.password.errors%}
+        <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="mb-3 input">
+        {{ registerform.image.label(class="form-control-label") }}
+        {{ registerform.image(class="form-control-file") }}
+        {% for error in registerform.image.errors%}
+        <small class="text-danger w-100 p-1" style="--bs-text-opacity: .75;">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>
+</div>
+{% endblock %}

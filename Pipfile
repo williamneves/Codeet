@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+pysqlite3 = "*"
+db-sqlite3 = "*"
+pymysql = "*"
+flask-migrate = "==2.5.3"
+flask-script = "==2.0.5"
+flask-wtf = "*"
+email-validator = "*"
+flask-reuploaded = "*"
+werkzeug = "==2.0.3"
+flask-login = "*"
+flask-cors = "*"
+flask-bcrypt = "*"
+
+[dev-packages]
+autopep8 = "*"
+
+[requires]
+python_version = "3.10"

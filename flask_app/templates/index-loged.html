@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<!-- Content -->
+<div class="container-lg">
+    <div class="row my-5">
+        <div class="col-3">
+            <!-- sidebar -->
+            <div class="card w-100 text-center p-3 border border-2">
+                <div class="card-body">
+                    <h5 class="card-title">Welcome to Codeet</h5>
+                    <hr class="dropdown-divider">
+                    <p class="card-text fs-6 lh-sm">We are a little community of coders and codetts.</p>
+                    <p class="card-text fs-6 lh-sm">If you want to talk about code, create your account and let's
+                        <span class="font-monospace badge bg-black codetext">print(codeets)</span>
+                    </p>
+                    <hr class="">
+                    <a href="#" class="btn btn-primary">Create an Account</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <!-- codeets -->
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card border border-2 mb-5">
+                <div class="card-body row">
+                    <div class="col-11 row">
+                        <div class="col-2 d-flex align-items-center justify-content-center">
+                            <img src="{{url_for('static', filename='img/image.jpg')}}" alt="" width="80px"
+                                class="rounded-3 border border-3 align-self-center">
+                        </div>
+                        <div class="col-10">
+                            <div class="col-12 codetext text-muted">
+                                @user_1.say = codeet; print(codeet)
+                            </div>
+                            <div class="col-12">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus officiis
+                                maiores omnis, ea dolorum ut reiciendis illum saepe ducimus magnam sapiente.</div>
+                        </div>
+                    </div>
+                    <div class="col-1 px-1 d-flex flex-column justify-content-around fs-5 text-center">
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-circle-heart"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-arrows-retweet"></i></a>
+                        <a href="#" class="text-reset"><i class="fa-duotone fa-reply"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="card-footer text-black-75 text-end codetext py-0 fonttags">
+                    <div class="col-12">
+                        <span>
+                            <span class="text-danger">for</span> tags <span class="text-danger">in</span> message.tags;
+                            <span class="text-success">print</span><span class="text-info">(</span>'#'<span
+                                class="text-danger">+</span>tags<span class="text-info">)</span> <span
+                                class="text-black-50">>>></span> <span class="text-success">#myfirstcodeet</span>
+                        </span>
+                    </div>
+                    <hr class="m-0">
+                    <div class="col-12">
+                        <span class="text-black-50">message.date = 1 day ago; len(message) = 45 chars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <!-- tagbar -->
+            <h5 class="text-muted">Top #tags</h5>
+            <p class="text-black-50 my-0"><a href="#" class="text-reset text-decoration-none">#myfirstcodeet</a></p>
+            <p class="text-black-50 my-0"><a href="#" class="text-reset text-decoration-none">#codeet</a></p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

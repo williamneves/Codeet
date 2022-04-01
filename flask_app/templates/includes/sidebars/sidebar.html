@@ -1,0 +1,56 @@
+<!-- sidebar -->
+    {% if not current_user.is_authenticated %}
+    <div class="card w-100 text-center p-3 border border-2">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to Codeet</h5>
+            <hr class="dropdown-divider">
+            <p class="card-text fs-6 lh-sm">We are a little community of coders and codetts.</p>
+            <p class="card-text fs-6 lh-sm">If you want to talk about code, create your account and let's
+                <span class="font-monospace badge bg-black codetext">print(codeets)</span>
+            </p>
+            <hr class="">
+            <a href="{{url_for('auth.register')}}" class="btn btn-primary">Create an Account</a>
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="card w-100 px-5 py-3 border border-2">
+        <div class="card-body row position-relative d-flex flex-column">
+            <div
+                class=" col-12 d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle">
+                <img src="{{url_for('static', filename='img/uploads/'+current_user.image)}}" alt="" width="80px"
+                    height="80px" class="rounded-3 border border-3 align-self-center" style="object-fit: cover;">
+            </div>
+            <br>
+            <div class="col-12 mt-3">
+                {% if not current_user.first_name %}
+                <h5 class="text-black-75 mb-0">Your name...</h5>
+                {% else %}
+                <h5 class="text-black-75 mb-0">{{current_user.first_name|title}}
+                    {{current_user.last_name|title}}
+                </h5>
+                {% endif %}
+            </div>
+            <hr class="m-0">
+            <div class="col-12">
+                <h5 class="text-muted">@{{current_user.username}}</h5>
+            </div>
+            <div class="col-12 mt-2 mb-1">
+                <p class="text-dark fw-bold m-0">Bio:</p>
+                <p class="text-muted text-center fst-italic">I'm a codeer with a Codeet account. I'm awesome!
+                </p>
+            </div>
+            <div class="col-12 mb-3">
+                <small class="text-muted">Create in {{current_user.created_at.strftime('%m/%d/%Y')}}</small>
+            </div>
+            <div class="col-12">
+                <a href="#" class="text-reset d-block mb-2  text-decoration-none"><i
+                        class="fa-duotone fa-gear me-2"></i>Edit Profile</a>
+                <a href="{{url_for('auth.logout')}}" class="text-reset d-block mb-2  text-decoration-none"><i
+                        class="fa-duotone fa-right-from-bracket me-2"></i>Logout</a>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
