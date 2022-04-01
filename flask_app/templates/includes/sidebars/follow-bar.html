@@ -1,7 +1,7 @@
 <div class="col-12 mb-3">
     <!-- tagbar -->
-    <h5 class="text-muted">Followers<span class="badge bg-info ms-2">{{current_user.followed_by.all()|length}}</span></h5>
-    {% for follow in current_user.followed_by.all() %}
+    <h5 class="text-muted">Followers<span class="badge bg-info ms-2">{{user.followed_by.all()|length}}</span></h5>
+    {% for follow in user.followed_by.all() %}
     <p class="text-black-50 my-0"><a href="/{{follow.username}}/"
             class="text-reset text-decoration-none">@{{follow.username}}</a></p>
     {% endfor %}
@@ -9,8 +9,8 @@
 </div>
 <div class="col-12">
     <!-- tagbar -->
-    <h5 class="text-muted">Following<span class="badge bg-info ms-2">{{current_user.following.all()|length}}</span></h5>
-    {% for follow in current_user.following.all() %}
+    <h5 class="text-muted">Following<span class="badge bg-info ms-2">{{user.following.all()|length}}</span></h5>
+    {% for follow in user.following.all() %}
     <p class="text-black-50 my-0"><a href="/{{follow.username}}/"
             class="text-reset text-decoration-none">@{{follow.username}}</a></p>
     {% endfor %}
