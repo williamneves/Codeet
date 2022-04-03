@@ -21,7 +21,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'Z\xe9\x98\xc1\x1f\x00E\x80`\xf2\xf2\xce'
     
     #Upload configurations
-    app.config["UPLOADED_PHOTOS_DEST"] = "static/img/uploads"
+    app.config["UPLOADED_PHOTOS_DEST"] = "flask_app/static/img/uploads"
     configure_uploads(app,photos)
     
     #SQLAlchemy configurations
