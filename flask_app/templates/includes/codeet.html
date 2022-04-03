@@ -2,10 +2,10 @@
 <div class="card border border-3 mb-5" id="new-codeet-card">
     <div class="card-body row">
         <div class="col-11 row">
-            <div class="col-2 d-flex align-items-center justify-content-center">
-                <img src="{{url_for('static', filename='img/uploads/'+codeet.user.image)}}"
+            <div class="col-2 d-flex align-items-center justify-content-center avatar-profile">
+                <a href="/{{codeet.user.username}}/" class="text-decoration-none"><img src="{{url_for('static', filename='img/uploads/'+codeet.user.image)}}"
                     alt="{{codeet.user.username}} Avatar" width="80px"
-                    class="rounded-3 border border-3 align-self-center">
+                    class="rounded-3 border border-3 align-self-center"></a>
             </div>
             <div class="col-10">
                 <div class="col-12 codetext text-muted">

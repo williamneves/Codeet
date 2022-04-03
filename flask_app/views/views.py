@@ -1,10 +1,9 @@
-from flask_app import db
+from ..extensions import db
 from flask_app.models.models import User, Codeet, followers, likes, Tags,codeet_tags,create_tags_from_codeet
 from flask_app.models.forms import RegisterForm, LoginForm, CodeetForm
-from flask import jsonify, redirect, render_template,request,url_for,request,flash,make_response,Blueprint
+from flask import jsonify, redirect, render_template,request,url_for,request,flash,Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-import uuid
 from flask_login import login_user, login_required, current_user, logout_user
 
 views = Blueprint('views', __name__)
@@ -13,22 +12,6 @@ views = Blueprint('views', __name__)
 #******************************************************
 #Routes
 #******************************************************
-
-# @views.route('/test/',methods=['POST'])
-# def json():
-#     codeets = Codeet.query.order_by(Codeet.created_at.desc()).first()
-#     # loginform = LoginForm()
-#     # print(codeets)
-#     codeetform = CodeetForm()
-#     today = datetime.utcnow()
-    
-    
-#     jsondata = request.json
-#     print(jsondata)
-    
-#     headers = {'Content-Type': 'text/html'}
-    
-#     return make_response(render_template('test.html',codeet=codeets,today=today),200,headers)
     
 @views.route('/')
 def index():
@@ -39,6 +22,7 @@ def index():
     loginform = LoginForm()
     codeetform = CodeetForm()
     
+    # Query for just the codeets from followed users
     # if current_user.is_authenticated:
     #     codeets = Codeet.query.join(followers, (followers.c.followee_id == Codeet.user_id)).filter(followers.c.follower_id == current_user.id).order_by(Codeet.created_at.desc()).all()
     
@@ -47,8 +31,12 @@ def index():
     
     return render_template("index.html",loginform=loginform,codeets=codeets,today=today,is_logged=is_logged,current_user=current_user,codeetform=codeetform)
 
-@views.route('/tags/<tag>/')
-def tag(tag):
+#******************************************************
+# Tags View
+#******************************************************
+
+@views.route('/tags/<tagname>/')
+def tag(tagname):
     
     is_logged = current_user.is_authenticated
     
@@ -56,20 +44,22 @@ def tag(tag):
     loginform = LoginForm()
     codeetform = CodeetForm()
     
-    # if current_user.is_authenticated:
-    #     codeets = Codeet.query.join(followers, (followers.c.followee_id == Codeet.user_id)).filter(followers.c.follower_id == current_user.id).order_by(Codeet.created_at.desc()).all()
     
-    tagid = Tags.query.filter_by(tag=tag).first()
+    query_tag = Tags.query.filter_by(tag=tagname).first()
     
-    print(tagid.id)
+    print(query_tag.tag)
     
     
-    codeets = db.session.query(Codeet, Tags).outerjoin(Tags, Tags.id == Codeet.codeet_tags.id).all()
+    codeets = db.session.query(Codeet).join(codeet_tags,(codeet_tags.c.codeet_id == Codeet.id)).filter(codeet_tags.c.tag_id == query_tag.id).all()
     
     print(codeets)
     
     
     return render_template("index.html",loginform=loginform,codeets=codeets,today=today,is_logged=is_logged,current_user=current_user,codeetform=codeetform)
+
+#******************************************************
+# Profile View
+#******************************************************
 
 @views.route('/profile/')
 @login_required
@@ -85,9 +75,13 @@ def profile():
     return render_template('profile.html',loginform=loginform, current_user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today,user=current_user)
 
 
-@views.route('/add-codeet-profile/', methods=['POST'])
+#******************************************************
+# Add codeet View
+#******************************************************
+
+@views.route('/add-codeet/', methods=['POST'])
 @login_required
-def add_codeet_profile():
+def add_codeet():
     # Creating the new codeet
     new_codeet = Codeet(text=request.json['text'],user_id=current_user.id)
     db.session.add(new_codeet)
@@ -201,9 +195,3 @@ def add_like():
         response = {'response': "This is your post"}
     
         return jsonify(response)
-
-# @views.route('/add-tag/', methods=['POST'])
-# @login_required
-# def add_tag():
-#     pass
-    

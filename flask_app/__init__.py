@@ -1,16 +1,10 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, MigrateCommand
+from .extensions import photos,db,migrate,bcrypt
+from flask_migrate import MigrateCommand
 from flask_script import Manager, Server
-from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_uploads import configure_uploads
 from flask_login import LoginManager
-from flask_bcrypt import Bcrypt
-bcrypt = Bcrypt()
 
-
-db = SQLAlchemy()
-migrate = Migrate()
-photos = UploadSet('photos', IMAGES)
 
 
 def create_app():
@@ -21,11 +15,11 @@ def create_app():
     app.config['SECRET_KEY'] = 'Z\xe9\x98\xc1\x1f\x00E\x80`\xf2\xf2\xce'
     
     #Upload configurations
-    app.config["UPLOADED_PHOTOS_DEST"] = "static/img/uploads"
+    app.config["UPLOADED_PHOTOS_DEST"] = "flask_app/static/img/uploads"
     configure_uploads(app,photos)
     
     #SQLAlchemy configurations
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/db_twitter_clone'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:00000000@localhost/db_twitter_clone'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     bcrypt.init_app(app)

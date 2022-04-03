@@ -38,3 +38,8 @@ body {
 #new-codeet-card{
     transition: all 0.5s ease;
 }
+.avatar-profile {
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+}

@@ -1,8 +1,10 @@
-function submit_new_codeet(e) {
+// Add new Codeet Dynamically
+
+function submit_new_codeet(input_data) {
 
     data = {
-        'text': e.target.text.value,
-        'user_id': e.target.user_id.value,
+        'text': input_data.target.text.value,
+        'user_id': input_data.target.user_id.value,
     }
 
     let text_codeet = document.getElementById('post-tweet-text')
@@ -14,8 +16,8 @@ function submit_new_codeet(e) {
     btn.innerHTML = `<button class="btn btn-primary m-0 align-self-center me-1"style="width:110px;" disabled>Posting...<i class="fas fa-spinner fa-spin"></i></button>`
     let card = document.getElementById('new-codeet-card')
 
-    axios.post('/add-codeet-profile/', data)
-        .then(res => {
+    axios.post('/add-codeet/', data)
+        .then(response => {
 
             setTimeout(() => {
                 btn.innerHTML = originalInnerHtml
@@ -26,7 +28,7 @@ function submit_new_codeet(e) {
                 text_codeet.disabled = false;
                 text_codeet.value = ""
 
-                let newCodeet = createCodeet(res.data)
+                let newCodeet = createCodeet(response.data)
                 document.getElementById('dynamic-codeet').prepend(newCodeet)
             }, 3000)
 
@@ -51,7 +53,6 @@ function createCodeet(data) {
 }
 
 // NEW LIKE
-
 function submit_new_like(like) {
 
     data = {
@@ -59,10 +60,10 @@ function submit_new_like(like) {
         'user_id': like.target.user_id.value,
     }
 
+    //Selecting the button like by id and codeet id
     let like_btn = document.querySelector(`#like-codeet-btn-${data['codeet_id']}`)
 
-        console.log(like_btn.classList.contains('codeet-liked'))
-
+    // If the user has NOT liked the codeet
     if (!like_btn.classList.contains('codeet-liked')) {
 
         like_btn.disabled = true;
@@ -90,8 +91,8 @@ function submit_new_like(like) {
 
     }
 
+    // If the user HAS liked the codeet
     else {
-
         like_btn.disabled = true;
 
         console.log('unliking')

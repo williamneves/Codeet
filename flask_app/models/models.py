@@ -12,7 +12,7 @@ import re
 
 #Followers relationship table
 followers = db.Table('follower',
-                    db.Column('id', db.Integer, primary_key=True),
+                    db.Column('id', db.Integer, primary_key=True,autoincrement=True),
                     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
                     db.Column('followee_id', db.Integer, db.ForeignKey('user.id')),
                     db.Column('created_at', db.DateTime(timezone=True), default=func.now())
@@ -20,7 +20,7 @@ followers = db.Table('follower',
 
 #Likes
 likes = db.Table('likes',
-    db.Column('id', db.Integer, primary_key=True),
+    db.Column('id', db.Integer, primary_key=True,autoincrement=True),
     db.Column('codeet_id', db.Integer,db.ForeignKey('codeet.id'),primary_key=True),
     db.Column('user_id', db.Integer,db.ForeignKey('user.id'),primary_key=True),
     db.Column('created_at', db.DateTime(timezone=True), default=func.now())
@@ -28,7 +28,7 @@ likes = db.Table('likes',
 
 #Tags
 codeet_tags = db.Table('codeet_tags',
-    db.Column('id', db.Integer, primary_key=True),
+    db.Column('id', db.Integer, primary_key=True,autoincrement=True),
     db.Column('codeet_id', db.Integer,db.ForeignKey('codeet.id'),primary_key=True),
     db.Column('tag_id', db.Integer,db.ForeignKey('tags.id'),primary_key=True),
     db.Column('created_at', db.DateTime(timezone=True), default=func.now())
@@ -47,6 +47,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(255),nullable=False)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
+    name = db.Column(db.String(255))
     birth_date = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())
     location = db.Column(db.String(255))
@@ -68,7 +69,7 @@ class User(UserMixin, db.Model):
     
     #Codeet.user.
 class Codeet(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     text = db.Column(db.String(255),nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now())

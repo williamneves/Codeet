@@ -1,7 +1,7 @@
-from flask_app import photos,db,bcrypt
+from ..extensions import photos,db,bcrypt
 from flask_app.models.models import User, Codeet
 from flask_app.models.forms import RegisterForm, LoginForm, CodeetForm
-from flask import redirect, render_template,request,url_for,request,flash,make_response,Blueprint
+from flask import redirect, render_template,request,url_for,request,flash,Blueprint
 from datetime import datetime
 import uuid
 from flask_login import login_user, login_required, current_user, logout_user
@@ -13,6 +13,7 @@ auth = Blueprint('auth', __name__)
 #Routes
 #******************************************************
 
+# LOGIN
 @auth.route('/login/', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -34,6 +35,8 @@ def login():
     
     return render_template("index.html",loginform=loginform)
 
+
+#LOGOUT
 @auth.route('/logout/')
 @login_required
 def logout():
@@ -41,21 +44,8 @@ def logout():
     return redirect(url_for('views.index'))
 
 
-@auth.route('/profile/')
-@login_required
-def profile():
-    
-    today = datetime.utcnow()
-    loginform = LoginForm()
-    codeetform = CodeetForm()
-    
-    codeets = Codeet.query.filter_by(user_id=current_user.id).order_by(Codeet.created_at.desc()).all()
-    total_codeets = len(codeets)
-    
-    return render_template('profile.html',loginform=loginform, user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today)
 
-
-
+#REGISTER
 @auth.route('/register/', methods=[ 'POST','GET'])
 def register():
     loginform = LoginForm()
@@ -78,7 +68,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(username=registerform.username.data).first()
-        login_user(user)
+        login_user(user, remember=True)
         
         return redirect(url_for('views.profile'))
     
