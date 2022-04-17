@@ -31,6 +31,13 @@
         <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
         {% endfor %}
     </div>
+    <div class="mb-3 form-floating">
+        {{ registerform.confirm_password(class="form-control", placeholder='-') }}
+        {{ registerform.confirm_password.label }}
+        {% for error in registerform.confirm_password.errors%}
+        <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+        {% endfor %}
+    </div>
     <div class="mb-3 input">
         {{ registerform.image.label(class="form-control-label") }}
         {{ registerform.image(class="form-control-file") }}

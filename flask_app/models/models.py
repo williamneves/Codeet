@@ -77,6 +77,15 @@ class Codeet(db.Model):
     likes = db.relationship('User', secondary=likes,lazy='subquery',backref=db.backref('codeet',lazy=True))
     
     codeet_tags = db.relationship('Tags', secondary=codeet_tags,lazy='dynamic',backref=db.backref('codeet',lazy=True))
+    replies = db.relationship('Reply',backref='codeet',lazy='dynamic')
+    
+class Reply(db.Model):
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    reply_text = db.Column(db.String(255),nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    codeet_id = db.Column(db.Integer, db.ForeignKey('codeet.id'), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now())
+    author_user = db.relationship('User',backref='reply',lazy=True)
     
     #Tags
 class Tags(db.Model):

@@ -68,7 +68,7 @@ def create_app():
     manager.add_command('db', MigrateCommand)
     manager.add_command("runserver", Server(port=5588,use_debugger=True))
     
-    return app
+    return manager
 
     #******************************************************
     #Run Server

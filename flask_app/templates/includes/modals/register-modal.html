@@ -1,0 +1,93 @@
+
+    {{ update_profileForm.csrf_token }}
+    <input type="hidden" name="user_id" value="user.id">
+    <div class="row justify-content-around align-items-end mb-3">
+        <hr>
+        <div class="col-3">
+            <img src="{{url_for('static', filename='img/uploads/'+user.image)}}" alt="{{user.username}} profile avatar"
+                width="80px" class="rounded-3 border border-3 bg-light avatar-profile-edit">
+        </div>
+        <div class="col-9">
+            <h6>Change Avatar</h6>
+            <div class="input-group">
+                {{ update_profileForm.image.label(class="input-group-text", value='UPLOAD') }}
+                {{ update_profileForm.image(class="form-control") }}
+                {% for error in update_profileForm.image.errors%}
+                <small class="text-danger w-100 p-1" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h6>Update your profile:</h6>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.name(class="form-control", value=user.name) }}
+                {{ update_profileForm.name.label }}
+                {% for error in update_profileForm.name.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.username(class="form-control", value=user.username) }}
+                {{ update_profileForm.username.label }}
+                {% for error in update_profileForm.username.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.email(class="form-control", value=user.email,disabled=True) }}
+                {{ update_profileForm.email.label }}
+                {% for error in update_profileForm.email.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.password(class="form-control", disabled=True) }}
+                {{ update_profileForm.password.label }}
+                {% for error in update_profileForm.password.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.location(class="form-control", value=user.location) }}
+                {{ update_profileForm.location.label }}
+                {% for error in update_profileForm.location.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.birth_date(class="form-control",value=user.birth_date) }}
+                {{ update_profileForm.birth_date.label }}
+                {% for error in update_profileForm.birth_date.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3 form-floating">
+                {{ update_profileForm.bio(class="form-control", value=user.bio) }}
+                {{ update_profileForm.bio.label }}
+                {% for error in update_profileForm.bio.errors%}
+                <small class="text-danger" style="--bs-text-opacity: .75;">{{ error }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>

@@ -57,6 +57,34 @@
             {% include 'includes/sidebars/follow-bar.html' %}
         </div>
     </div>
+    <!-- modal -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center mb-1"> Update user informations</h4>
+                    <form action="/update-profile/" method="POST" enctype="multipart/form-data" class="col-10 m-auto p-3">
+                    {% include 'includes/modals/register-modal.html' %}
+                    <button type="submit" class="btn btn-primary">Update <i class="fa-duotone fa-user-pen"></i></button>
+                    </form>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close <i
+                            class="fa-duotone fa-xmark-large"></i></button>
+                    <button type="submit" class="btn btn-primary">Update <i class="fa-duotone fa-user-pen"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

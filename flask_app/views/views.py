@@ -1,6 +1,7 @@
+from crypt import methods
 from ..extensions import db
-from flask_app.models.models import User, Codeet, followers, likes, Tags,codeet_tags,create_tags_from_codeet
-from flask_app.models.forms import RegisterForm, LoginForm, CodeetForm
+from flask_app.models.models import User, Codeet, followers, likes, Tags,codeet_tags,create_tags_from_codeet, Reply
+from flask_app.models.forms import RegisterForm, LoginForm, CodeetForm, updateProfileForm
 from flask import jsonify, redirect, render_template,request,url_for,request,flash,Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
@@ -65,6 +66,9 @@ def tag(tagname):
 @login_required
 def profile():
     
+    update_profileForm = updateProfileForm()
+    registerform = RegisterForm()
+    
     today = datetime.utcnow()
     loginform = LoginForm()
     codeetform = CodeetForm()
@@ -72,7 +76,7 @@ def profile():
     codeets = Codeet.query.filter_by(user_id=current_user.id).order_by(Codeet.created_at.desc()).all()
     total_codeets = len(codeets)
     
-    return render_template('profile.html',loginform=loginform, current_user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today,user=current_user)
+    return render_template('profile.html',loginform=loginform, current_user=current_user,codeetform=codeetform,codeets=codeets,total_codeets=total_codeets,today=today,user=current_user,registerform=registerform,update_profileForm=update_profileForm)
 
 
 #******************************************************
@@ -145,6 +149,37 @@ def user_timeline(username):
         is_logged=is_logged,following=following)
     
     
+@views.route('/codeet/<codeet_id>/')
+def codeet(codeet_id):
+    
+    today = datetime.utcnow()
+    loginform = LoginForm()
+    codeetform = CodeetForm()
+    
+    codeet = Codeet.query.filter_by(id=codeet_id).first()
+    
+    if codeet == None:
+        flash(f'This codeet not exist',category='codeet_not_exist')
+        return redirect(url_for('views.index'))
+    
+    user = User.query.filter_by(id=codeet.user_id).first()
+    
+    return render_template('codeetpage.html',
+        loginform=loginform,user=user,
+        codeetform=codeetform,codeet=codeet,
+        today=today,current_user=current_user)
+
+
+@views.route('/new-reply/', methods=['POST'])
+def new_reply():
+    
+    new_reply = Reply(reply_text = request.form["reply_text"],user_id=current_user.id,codeet_id=request.form["codeet_id"])
+    
+    codeet = Codeet.query.filter_by(id=request.form["codeet_id"]).first()
+    codeet.replies.append(new_reply)
+    db.session.commit()
+    
+    return redirect(url_for('views.codeet',codeet_id=request.form["codeet_id"]))
     
     
 

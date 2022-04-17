@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<!-- Content -->
+<div class="container-lg">
+    <div class="row my-5">
+        <div class="col-3">
+            <!-- sidebar -->
+            <!-- Includes sidebar-timeline -->
+            {% include 'includes/sidebars/sidebar-timeline.html' %}
+        </div>
+        <div class="col-7">
+
+            <!-- Dynamic codeet -->
+            <div id="dynamic-codeet">
+                <!-- new codeet -->
+            </div>
+
+            
+            {% include 'includes/codeet.html' %}
+
+            <div>
+                <form action="/new-reply/" method="post">
+                    <input type="hidden" name="user_id" value="{{current_user.id}}">
+                    <input type="hidden" name="codeet_id" value="{{codeet.id}}">
+                    <div class="form-group">
+                        <label for="reply_text">Reply</label>
+                        <textarea class="form-control" id="reply_text" name="reply_text" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+            {% for reply in codeet.replies %}
+            <div>
+                <div class="card border border-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <a href="/{{reply.author_user.username}}/"><img src="{{url_for('static', filename='img/uploads/'+reply.author_user.image)}}"" alt="{{reply.author_user.username}} profile avatar" width="80px" class="rounded-3 border border-3 align-self-start bg-light avatar-profile"></a>
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="/{{reply.user_id}}/"><span class="text-primary">@{{reply.author_user.username}}</span></a>
+                                        <span class="text-muted">{{reply.created_at}}</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <p>{{reply.reply_text}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+
+        </div>
+        <div class="col-2">
+            {% include 'includes/sidebars/follow-bar.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
