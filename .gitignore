@@ -7,3 +7,4 @@ htmas.py
 package-lock.json
 package.json
 __pycache__
+*/__pycache__
