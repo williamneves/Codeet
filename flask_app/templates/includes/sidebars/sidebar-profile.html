@@ -1,4 +1,4 @@
-<div class="card w-100 px-5 py-2 border border-2">
+<div class="card w-100 px-3 py-2 border border-2">
     <div class="card-body row position-relative d-flex flex-column">
         <div
             class=" col-12 d-flex align-items-center justify-content-center position-absolute top-0 start-50 translate-middle">
@@ -27,8 +27,8 @@
             <small class="text-muted">Create in {{current_user.created_at.strftime('%m/%d/%Y')}}</small>
         </div>
         <div class="col-12">
-            <a href="#" class="text-reset d-block mb-2  text-decoration-none"><i
-                    class="fa-duotone fa-gear me-2"></i>Edit Profile</a>
+            <a type="button" class="text-reset d-block mb-2  text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                    class="fa-duotone fa-gear me-2" ></i>Edit Profile</a>
             <a href="{{url_for('auth.logout')}}" class="text-reset d-block mb-2  text-decoration-none"><i
                     class="fa-duotone fa-right-from-bracket me-2"></i>Logout</a>
         </div>
